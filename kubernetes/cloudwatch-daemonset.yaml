@@ -1,0 +1,29 @@
+apiVersion: apps/v1
+kind: DaemonSet
+metadata:
+  name: cloudwatch-agent
+  namespace: kube-system
+spec:
+  selector:
+    matchLabels:
+      name: cloudwatch-agent
+  template:
+    metadata:
+      labels:
+        name: cloudwatch-agent
+    spec:
+      containers:
+        - name: cloudwatch-agent
+          image: amazon/cloudwatch-agent:latest
+          volumeMounts:
+            - name: cloudwatch-agent-config
+              mountPath: /etc/cwagentconfig
+              subPath: cloudwatch-agent-config.json
+          resources:
+            limits:
+              cpu: "100m"
+              memory: "200Mi"
+      volumes:
+        - name: cloudwatch-agent-config
+          configMap:
+            name: cloudwatch-agent-config

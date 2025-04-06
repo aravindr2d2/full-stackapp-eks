@@ -1,0 +1,22 @@
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: fetch-weather-data
+spec:
+  schedule: "0 * * * *"  # This will run every hour
+  jobTemplate:
+    spec:
+      template:
+        spec:
+          containers:
+            - name: weather-fetcher
+              image: your-docker-image
+              env:
+                - name: API_KEY
+                  valueFrom:
+                    secretKeyRef:
+                      name: weather-api-credentials
+                      key: api_key
+                - name: S3_BUCKET
+                  value: "onfinance-weather-data"
+          restartPolicy: OnFailure

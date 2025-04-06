@@ -1,0 +1,42 @@
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: weather-data-fetcher
+spec:
+  schedule: "0 * * * *"  # Runs every hour, adjust the cron expression as needed
+  jobTemplate:
+    spec:
+      template:
+        spec:
+          containers:
+            - name: weather-fetcher
+              image: python:3.9-slim  # Use an appropriate image
+              command: ["python3", "/scripts/fetch_weather_data.py"]
+              envFrom:
+                - secretRef:
+                    name: weather-api-secrets  # The secret holding the API_KEY
+              volumeMounts:
+                - name: script-volume
+                  mountPath: /scripts
+          restartPolicy: OnFailure  # Restart failed jobs
+          volumes:
+            - name: script-volume
+              configMap:
+                name: weather-script-config  # ConfigMap to mount the Python script
+---
+apiVersion: v1
+kind: Secret
+metadata:
+  name: weather-api-secrets
+type: Opaque
+data:
+  API_KEY: <your_base64_encoded_api_key>
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: weather-script-config
+data:
+  fetch_weather_data.py: |
+    # Place the content of the Python script here, or use an external storage method
+    <fetch-weather-s3.py content>
