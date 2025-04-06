@@ -43,8 +43,6 @@ Apply CronJob, Secret, and ConfigMap:
 
 Once the YAML files are ready, apply them to your Kubernetes cluster:
 
-bash
-Copy
 kubectl apply -f weather-cronjob.yaml
 
 Ensure IAM Permissions:

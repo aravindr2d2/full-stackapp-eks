@@ -37,4 +37,4 @@ kubectl get pods
 To delete the deployments
 
 
-kubectl delete -f kubernetes/manifests
+kubectl delete -f kubernetes

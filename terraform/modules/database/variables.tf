@@ -1,9 +1,9 @@
 variable "db_username" {
-  description = "EKS Cluster Name"
-  default     = "onfinance-eks-cluster"
+  description = "db user Name"
+  default     = "dbuser1"
 }
 
 variable "db_password" {
-  description = "EKS Cluster Name"
-  default     = "onfinance-eks-cluster"
+  description = "db password"
+  default     = "password1"
 }

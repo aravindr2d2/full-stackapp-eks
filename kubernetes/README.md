@@ -28,6 +28,12 @@ serets   secrets.yaml
 
 Horizontal pod autosaler   hpa.yaml
 
+cloudwatch daemonset   cloudwatch-daemonset.yaml
+
+cloudwatch configmap   cloudwatch-configmap.yaml
+
+cronjob api    weather-cronjob.yaml
+
 2. Deployment Instructions
 
 Step 1: Create ConfigMap and Secrets
@@ -35,12 +41,15 @@ Create the ConfigMap and Secrets before applying the Deployments.
 
 kubectl apply -f configmap.yaml
 kubectl apply -f secrets.yaml
+kubectl apply -f cloudwatch-daemonset.yaml
+kubectl apply -f cloudwatch-configmap.yaml
 
 Step 2: Apply Deployments
 Apply the Deployment and Service for both the Backend API and Frontend Web services.
 
 kubectl apply -f backend-deployment.yaml
 kubectl apply -f frontend-deployment.yaml
+kubectl apply -f wether-cronjob.yaml
 
 Step 3: Set Up Horizontal Pod Autoscaler
 Apply the Horizontal Pod Autoscaler (HPA) for the Backend API.

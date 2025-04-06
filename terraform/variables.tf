@@ -5,7 +5,7 @@ variable "aws_region" {
 
 variable "eks_cluster_name" {
   description = "EKS Cluster Name"
-  default     = "onfinance-eks-cluster"
+  default     = "eks-cluster"
 }
 
 variable "instance_type" {
@@ -15,9 +15,11 @@ variable "instance_type" {
 
 variable "db_username" {
   description = "RDS database master username"
+  default = "dbuser1"
 }
 
 variable "db_password" {
   description = "RDS database master password"
   sensitive   = true
+  default = "password1"
 }
