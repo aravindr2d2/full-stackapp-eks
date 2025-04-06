@@ -1,5 +1,6 @@
-Custom Data Integration Pipeline: Fetching Weather Data from a Public API, Storing in AWS S3, and Automating with Kubernetes CronJob
-Overview
+# Custom Data Integration Pipeline: Fetching Weather Data from a Public API, Storing in AWS S3, and Automating with Kubernetes CronJob
+
+## Overview
 
 This document outlines the implementation of a custom data integration pipeline that:
 
@@ -43,7 +44,9 @@ Apply CronJob, Secret, and ConfigMap:
 
 Once the YAML files are ready, apply them to your Kubernetes cluster:
 
+```sh
 kubectl apply -f weather-cronjob.yaml
+```
 
 Ensure IAM Permissions:
 Ensure that the Kubernetes worker nodes or the service account running the CronJob have the necessary IAM permissions to access AWS Secrets Manager and S3. You can attach an appropriate IAM role with the necessary policies.
@@ -53,12 +56,13 @@ To verify that the integration is working as expected, you can perform the follo
 
 Check CronJob Logs: Use kubectl to view the logs of the CronJob to verify if the data is being fetched and stored correctly.
 
-kubectl logs <pod-name> -c weather-fetcher
-
+```sh
+kubectl logs <pod-name> -c weather-fetch
+```
 Verify Data in S3: Check if the data is successfully stored in AWS S3. You can list the files in the designated S3 bucket and folder.
-
+```sh
 aws s3 ls s3://your-s3-bucket-name/weather_data/
-
+```
 Check for Errors: If an error occurs, it will be logged in the pod's logs. You can check for error messages related to fetching data or storing it in S3.
 
 Verify Data Integrity: Manually check the S3 bucket to ensure the files are correctly formatted as JSON and contain the expected weather data.

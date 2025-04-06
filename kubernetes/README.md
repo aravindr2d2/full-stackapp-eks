@@ -1,6 +1,6 @@
-Kubernetes Deployment: Backend API & Frontend Web Service
+# Kubernetes Deployment: Backend API & Frontend Web Service
 
-Overview
+## Overview
 
 This deployment focuses on a simple full-stack application running in a Kubernetes cluster and includes the following components:
 
@@ -15,21 +15,25 @@ This deployment focuses on a simple full-stack application running in a Kubernet
 
 ────────────────────────────────────────────
 
-Docker Images
+## Docker Images
 
 To build Docker images for both frontend and backend:
 
-# Build frontend image
+### Build frontend image
+```sh
 cd frontend
 docker build -t frontend-image .
+```
 
-# Build backend image
+#### Build backend image
+```sh
 cd backend
 docker build -t backend-image .
+```
 
 ────────────────────────────────────────────
 
-Kubernetes Manifest Files
+## Kubernetes Manifest Files
 
 Component                    Filename
 ---------------------------  ------------------------------
@@ -44,35 +48,41 @@ Scheduled CronJob (API)      weather-cronjob.yaml
 
 ────────────────────────────────────────────
 
-Deployment Instructions
+## Deployment Instructions
 
 Step 1: Create ConfigMap & Secrets
 
+```sh
 kubectl apply -f configmap.yaml
 kubectl apply -f secrets.yaml
 kubectl apply -f cloudwatch-daemonset.yaml
 kubectl apply -f cloudwatch-configmap.yaml
+```
 
 Step 2: Deploy Backend & Frontend
 
+```sh
 kubectl apply -f backend-deployment.yaml
 kubectl apply -f frontend-deployment.yaml
 kubectl apply -f weather-cronjob.yaml
+```
 
 Step 3: Configure Autoscaling (HPA)
 
+```sh
 kubectl apply -f hpa.yaml
+```
 
 Step 4: Verify Deployment
-
+```sh
 kubectl get pods
 kubectl get svc
 kubectl get hpa
 kubectl get svc frontend-service
-
+```
 ────────────────────────────────────────────
 
-High Availability
+## High Availability
 
 - Backend Replicas: 3  
 - Frontend Replicas: 2  
@@ -81,13 +91,13 @@ High Availability
 
 ────────────────────────────────────────────
 
-Scaling Configuration
+## Scaling Configuration
 
 - Autoscaling: Backend API scales automatically with HPA based on CPU usage.
 
 ────────────────────────────────────────────
 
-Best Practices Followed
+## Best Practices Followed
 
 - Use of ConfigMaps and Secrets for clean configuration management.
 - Health checks with liveness/readiness probes.

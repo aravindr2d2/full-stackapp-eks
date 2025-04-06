@@ -1,40 +1,41 @@
-# Terraform Setup for AWS EKS & RDS
+# Terraform setup for AWS EKS & RDS
 
-1. Initialize Terraform
-```bash
+## Terraform Setup 
+
+1. Run following Terraform commands:
+```sh
 terraform init
-
-Plan the infrastructure
-
 
 terraform plan
 
-Apply the infrastructure
-
-
 terraform apply
 
-To destroy the infrastructure
+```
 
+2. To destroy the infrastructure:
 
+```sh
 terraform destroy
 
+```
 
-**Kubernetes**
+## Kubernetes Setup
 
-```markdown
-# Kubernetes Setup
 
 1. Deploy the services on EKS
-```bash
+```sh
 ./scripts/deploy.sh
 
-Monitor the pods
+```
 
-
+2. Monitor the pods
+```sh
 kubectl get pods
+```
 
-To delete the deployments
+3. To delete the deployments
 
+```sh
+kubectl delete -f kubernetes/
 
-kubectl delete -f kubernetes
+```
