@@ -33,7 +33,7 @@ docker build -t backend-image .
 
 ────────────────────────────────────────────
 
-## Kubernetes Manifest Files
+Kubernetes Manifest Files
 
 Component                    Filename
 ---------------------------  ------------------------------
