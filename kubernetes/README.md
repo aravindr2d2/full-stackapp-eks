@@ -16,6 +16,14 @@ Health Checks: Configuring liveness and readiness probes to ensure that both ser
 
 Scaling: Using Horizontal Pod Autoscaler (HPA) to ensure auto-scaling based on CPU or memory usage.
 
+Images:
+
+For the images to use inside the kubernetes deployments for frontend and backend build them from frontend and backend folder 
+
+Inside frontend folder use command docker build -t fontend-image .
+
+Inside backend folder use command docker build -t backend-image .
+
 1. Kubernetes Deployment Manifest
 
 Backend API Deployment  backend-deployment.yaml

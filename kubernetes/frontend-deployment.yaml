@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: frontend
-          image: frontend-image:latest 
+          image: frontend-image:latest  # build docker image from frontend folder in git repo and use that image here
           ports:
             - containerPort: 80
           resources:
