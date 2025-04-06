@@ -33,18 +33,17 @@ docker build -t backend-image .
 
 ────────────────────────────────────────────
 
-Kubernetes Manifest Files
+## Kubernetes Manifest Files
 
-Component                    Filename
+Component:Filename
 ---------------------------  ------------------------------
-Backend Deployment           backend-deployment.yaml
-Frontend Deployment          frontend-deployment.yaml
-ConfigMap                    configmap.yaml
-Secrets                      secrets.yaml
-Horizontal Pod Autoscaler    hpa.yaml
-CloudWatch DaemonSet         cloudwatch-daemonset.yaml
-CloudWatch ConfigMap         cloudwatch-configmap.yaml
-Scheduled CronJob (API)      weather-cronjob.yaml
+- Backend Deployment:backend-deployment.yaml
+- Frontend Deployment:frontend-deployment.yaml
+- ConfigMap:configmap.yaml
+- Secrets:secrets.yaml
+- Horizontal Pod Autoscaler:hpa.yaml
+- CloudWatch ConfigMap:cloudwatch-configmap.yaml
+- Scheduled CronJob (API):weather-cronjob.yaml
 
 ────────────────────────────────────────────
 
